@@ -27,9 +27,25 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
-images.forEach((image) => {
-  const list = `<li class="images-item">
-  <img src="${image.url}" alt="${image.alt}" width="320">
-  </li>`;
-  gallery.insertAdjacentHTML("beforeend", list);
-});
+const markup = images
+  .map(
+    (image) =>
+      `<li class="images-item">
+    <img
+    class="gallery-image"
+      src="${image.url}"
+      alt="${image.alt}"
+      width="480"
+      style="border-radius: 15px">
+  </li>`
+  )
+  .join("");
+gallery.insertAdjacentHTML("beforeend", markup);
+
+gallery.style.display = "flex";
+gallery.style.flexWrap = "wrap";
+gallery.style.gap = "20px";
+gallery.style.listStyle = "none";
+gallery.style.justifyContent = "center";
+gallery.style.padding = "0";
+gallery.style.margin = "0";
